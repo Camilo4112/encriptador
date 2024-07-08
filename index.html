@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Encriptador de Texto</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton+SC&family=Courgette&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Encriptador de Texto</h1>
+        <textarea id="input-text" placeholder="Escribe el texto aquí..."></textarea>
+        <p class="note"><span class="warning-icon">⚠️</span> Solo letras minúsculas y sin acentos</p>
+        <div>
+            <button onclick="encryptText()">Encriptar</button>
+            <button onclick="decryptText()">Desencriptar</button>
+        </div>
+        <textarea id="output-text" placeholder="Resultado..."></textarea>
+        <button onclick="copyToClipboard()">Copiar</button>
+    </div>
+    <footer>
+        <p>Desarrollado por Juan Camilo Solorzano Gonzalez</p>
+        <p>
+            <a href="https://www.linkedin.com/in/tu-perfil" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/tu-usuario" target="_blank">GitHub</a>
+        </p>
+    </footer>
+    <script src="scripts.js"></script>
+</body>
+</html>
