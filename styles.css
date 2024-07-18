@@ -2,84 +2,192 @@ body {
     font-family: 'Anton SC', sans-serif;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: center; /* Centra verticalmente el contenido */
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    background-image: url('img/cract.jpg');
-    background-size: cover;
-    background-position: center;
+    background: linear-gradient(120deg, #ff8a00, #e52e71, #0073ff);
 }
 
 .container {
-    background-color: rgba(255, 255, 255, 0.6); /* Fondo blanco con opacidad */
+    background-color: rgba(255, 255, 255, 0.6);
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    text-align: center;
-    max-width: 500px;
+    text-align: left;
+    max-width: 800px;
+    width: 100%;
+    margin: auto; /* Centra horizontalmente */
+}
+
+.input-output-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan */
+    align-items: stretch; /* Alinea los elementos con la misma altura */
+    gap: 10px; /* Espacio entre elementos */
     width: 100%;
 }
 
-.note {
-    font-size: 14px; /* Tamaño del texto aumentado a 14px */
-    color: #141414;
-    text-align: left; /* Alineación a la izquierda */
-    margin-left: 15px; /* Margen izquierdo para separación */
-    margin-top: 5px; /* Margen superior ajustado */
-    margin-bottom: 0; /* Eliminar margen inferior */
-    display: inline-block; /* Hacer que el elemento se comporte como en línea */
-    vertical-align: middle; /* Alinear verticalmente */
-    font-family: 'Nunito', sans-serif; /* Aplicar la fuente Nunito */
-}
-
-textarea {
-    width: 100%;
-    height: 100px;
-    margin: 5px 0 10px; /* Margen superior ajustado, margen inferior agregado */
+#input-text {
+    width: 35%; /* Ancho del 30% */
+    min-height: 310px; /* Altura mínima */
+    max-height: 50vh; /* Altura máxima en relación al viewport */
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
-    font-size: 16px; /* Tamaño del texto aumentado a 16px */
+    font-size: 16px;
+    box-sizing: border-box;
+    overflow-y: auto;
 }
 
-button {
+#output-container {
+    position: relative; /* Para posicionar la imagen dentro del contenedor */
+    flex: 1; /* Ocupa el espacio restante */
+    display: flex;
+    flex-direction: column; /* Alinea el output-text y la imagen verticalmente */
+    justify-content: space-between; /* Distribuye espacio entre los elementos */
+}
+
+#output-text {
+    width: 80%; /* Ancho del 70% */
+    min-height: 310px; /* Altura mínima */
+    max-height: 50vh; /* Altura máxima en relación al viewport */
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 16px;
+    box-sizing: border-box;
+    overflow-y: auto;
+    margin-left: 10px;
+}
+
+#placeholder-image {
+    position: absolute;
+    top: 53%;
+    left: 45%;
+    transform: translate(-50%, -50%);
+    width: 150%; /* Ajuste inicial del tamaño de la imagen */
+    max-width: 260px; /* Tamaño máximo de la imagen */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+    object-fit: contain; /* Ajusta la imagen para que no se recorte */
+}
+
+@media (max-width: 600px) {
+    #placeholder-image {
+        max-width: 50px; /* Ajusta el tamaño máximo de la imagen en pantallas más pequeñas */
+        position: absolute;
+        top: 50%;
+        left: 45%;
+    }
+}
+
+@media (max-width: 400px) {
+    #placeholder-image {
+        max-width: 170px; /* Ajusta el tamaño máximo de la imagen en pantallas muy pequeñas */
+        position: absolute;
+        top: 50%;
+        left: 45%;
+    }
+}
+
+
+#output-text:not(:placeholder-shown) + #placeholder-image {
+    display: none; /* Oculta la imagen cuando hay texto en el área de resultados */
+}
+
+#error-image {
+    display: none;
+    position: fixed; /* Fijo para cubrir toda la pantalla */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Centra la imagen */
+    width: 40vw; /* Ajusta el ancho en relación con el viewport */
+    height: auto; /* Mantiene la relación de aspecto de la imagen */
+    object-fit: contain; /* Ajusta la imagen para que no se recorte */
+    z-index: 1000; /* Asegúrate de que esté sobre otros elementos */
+}
+
+.note {
+    font-size: 14px;
+    color: #141414;
+    margin: 5px 0;
+    display: inline-block;
+    vertical-align: middle;
+    font-family: 'Nunito', sans-serif;
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los botones se envuelvan en dispositivos más pequeños */
+    justify-content: center; /* Alinear botones al centro */
+    gap: 10px; /* Espacio entre botones */
+    margin-top: 10px;
+}
+
+.button-container button {
     margin: 5px;
-    padding: 12px 24px; /* Aumentar el padding del botón */
+    padding: 12px 24px;
     border: none;
     border-radius: 5px;
     background-color: #007BFF;
     color: white;
     cursor: pointer;
-    font-size: 14px; /* Tamaño del texto aumentado a 14px */
-    width: 150px; /* Ancho fijo del botón */
-    height: 40px; /* Altura fija del botón */
+    font-size: 1rem; /* Tamaño de fuente relativo */
+    width: auto; /* Ajuste automático del ancho */
+    height: auto; /* Ajuste automático de la altura */
+    min-width: 120px; /* Tamaño mínimo para el botón */
 }
 
-button:hover {
+.button-container button:hover {
     background-color: #0056b3;
+    transition: background-color 0.3s ease; /* Transición suave en el hover */
+}
+
+/* Media Queries para dispositivos más pequeños */
+@media (max-width: 600px) {
+    #input-text, #output-text {
+        font-size: 14px; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+    }
+
+    .button-container button {
+        padding: 10px 20px;
+        font-size: 0.9rem; /* Tamaño de fuente más pequeño en pantallas pequeñas */
+        min-width: 100px; /* Tamaño mínimo para botones en pantallas pequeñas */
+    }
+}
+
+@media (max-width: 400px) {
+    #input-text, #output-text {
+        font-size: 12px; /* Tamaño de fuente aún más pequeño en pantallas muy pequeñas */
+    }
+
+    .button-container button {
+        padding: 8px 16px;
+        font-size: 0.8rem; /* Tamaño de fuente aún más pequeño en pantallas muy pequeñas */
+        min-width: 80px; /* Tamaño mínimo para botones en pantallas muy pequeñas */
+    }
 }
 
 footer {
-    margin-top: 20px;
+    margin-top: 40px;
     padding: 10px;
     background-color: rgba(0, 0, 0, 0.7);
     color: white;
     width: 100%;
     text-align: center;
-    font-family: 'Courgette', cursive; /* Aplicar la fuente Courgette */
+    font-family: 'Courgette', cursive;
 }
 
 footer p {
     margin: 5px 0;
-    font-size: 14px; /* Tamaño del texto aumentado a 14px */
+    font-size: 14px;
 }
 
 footer a {
     color: #007BFF;
     text-decoration: none;
     margin: 0 5px;
-    font-size: 14px; /* Tamaño del texto aumentado a 14px */
+    font-size: 14px;
 }
 
 footer a:hover {

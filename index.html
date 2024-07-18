@@ -12,20 +12,26 @@
 <body>
     <div class="container">
         <h1>Encriptador de Texto</h1>
-        <textarea id="input-text" placeholder="Escribe el texto aquí..."></textarea>
+        <div class="input-output-container">
+            <textarea id="input-text" placeholder="Escribe el texto aquí..." rows="5"></textarea>
+            <div id="output-container">
+                <textarea id="output-text" placeholder="Resultado..." rows="5" readonly></textarea>
+                <img id="placeholder-image" src="img/no_mensaje.jpg" alt="Imagen de Placeholder">
+            </div>
+            <img id="error-image" src="img/error.jpg" alt="Error">
+        </div>
         <p class="note"><span class="warning-icon">⚠️</span> Solo letras minúsculas y sin acentos</p>
-        <div>
+        <div class="button-container">
             <button onclick="encryptText()">Encriptar</button>
             <button onclick="decryptText()">Desencriptar</button>
+            <button onclick="copyToClipboard()">Copiar</button>
         </div>
-        <textarea id="output-text" placeholder="Resultado..."></textarea>
-        <button onclick="copyToClipboard()">Copiar</button>
     </div>
     <footer>
         <p>Desarrollado por Juan Camilo Solorzano Gonzalez</p>
         <p>
-            <a href="https://www.linkedin.com/in/tu-perfil" target="_blank">LinkedIn</a> | 
-            <a href="https://github.com/tu-usuario" target="_blank">GitHub</a>
+            <a href="https://www.linkedin.com/in/juan-camilo-solorzano-gonz%C3%A1lez/" target="_blank">LinkedIn</a> | 
+            <a href="https://github.com/Camilo4112" target="_blank">GitHub</a>
         </p>
     </footer>
     <script src="scripts.js"></script>
